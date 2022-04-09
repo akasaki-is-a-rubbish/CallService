@@ -52,36 +52,9 @@ class AtCommand:
             return None
 
 
-# 查找端口函数
+# find all available serial ports
 def findPort():
     ports = serial.tools.list_ports.comports()
     for each in ports:
         if 'Unisoc Usb Serial Port 0' in each.description:
             return each.device
-
-
-# if __name__ == "__main__":
-#     port = findPort()
-#     if port is None:
-#         print("Can't find the port!")
-#         exit(1)
-#     print("The port is: ", port)
-
-#     test_at = AtCommand()
-#     test_at.open(port)
-
-#     # Pass case for check_at_resp
-#     test_at.send_at('AT')
-#     if test_at.check_at_resp('OK') == 'OK':
-#         print("Pass case for check_at_resp")
-#     # # Error case for check_at_resp
-#     # test_at.send_at('AT+COPS?')
-#     # print(test_at.check_at_resp('OK1'))
-#     # # Pass case for parse_at_resp
-#     # test_at.send_at('ATI')
-#     # print(test_at.parse_at_resp('Revision:', test_at.check_at_resp('OK')))
-#     # # Error case for parse_at_resp
-#     # test_at.send_at('ATI')
-#     # print(test_at.parse_at_resp('Revision1:', test_at.check_at_resp('OK')))
-
-#     test_at.close()
