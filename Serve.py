@@ -123,7 +123,8 @@ class Call:
         def on_message(client, userdata, msg):
             msg = msg.payload.decode()
             json_msg = json.loads(msg)
-            if len(json_msg) == 3:
+            print(json_msg)
+            if len(json_msg.keys()) == 3:
                 contacts = json_msg["contacts"].replace('"', "")
                 longitude = json_msg["longitude"]
                 latitude = json_msg["latitude"]
